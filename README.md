@@ -1,3 +1,7 @@
+<p align="right">
+    <a href="https://computesphere.com/"><img src="assets/logo.svg" width="50px" /></a>
+</p>
+
 # **ComputeSphere Deploy Image GitHub Action**
 
 This GitHub Action allows you to **deploy a container image** to your [ComputeSphere](https://computesphere.com) environment by adding a step to your workflow.
@@ -64,9 +68,17 @@ If you are deploying a **public container image** (no authentication required), 
 | `username`      | Container registry username (for private images)                                             | ❌ No    | `''` (empty) |
 | `password`      | Container registry password (for private images)                                             | ❌ No    | `''` (empty) |
 
-## 💡 **If `type` is `public`, `username` and `password` are ignored.**
+> **Note:** If `type` is `public`, `username` and `password` are ignored.
 
-## **Learn more**
+---
 
-- **ComputeSphere Docs**: [https://computesphere.com/docs](https://computesphere.com/docs)
-- **GitHub Actions Guide**: [https://docs.github.com/en/actions](https://docs.github.com/en/actions)
+<a href="https://console.computesphere.com"> <img src="https://cdn.sanity.io/images/5jct4wv7/production/a3a823db7833f9274fc723b1223084b51c7ed160-1103x160.png" width="350px" alt="ComputeSphere Logo"> </a>
+
+[Explore ComputeSphere Documentation](https://docs.computesphere.com)
+[GitHub Actions Guide](https://docs.github.com/en/actions)
+
+**Contact Us:**  
+[support@computesphere.com](mailto:support@computesphere.com)  
+[Support Portal](https://support.computesphere.com/portal)
+
+&copy; 2024 ComputeSphere LLC. All Rights Reserved.
