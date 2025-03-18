@@ -81,4 +81,4 @@ If you are deploying a **public container image** (no authentication required), 
 [support@computesphere.com](mailto:support@computesphere.com)  
 [Support Portal](https://support.computesphere.com/portal)
 
-&copy; 2024 ComputeSphere LLC. All Rights Reserved.
+&copy; 2025 ComputeSphere LLC. All Rights Reserved.
