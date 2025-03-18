@@ -1,0 +1,62 @@
+name: Deploy Image to ComputeSphere
+description: GitHub Action to deploy an image to ComputeSphere
+author: "ComputeSphere"
+branding:
+  icon: "arrow-right-circle"
+  color: "blue"
+inputs:
+  deployment_id:
+    description: Deployment ID for ComputeSphere
+    required: true
+  username:
+    description: Registry username
+    required: false
+    default: ''
+  password:
+    description: Registry password
+    required: false
+    default: ''
+  registry:
+    description: Registry URL
+    required: true
+  provider:
+    description: Image provider (e.g., other, ecr, gcr)
+    required: false
+    default: other
+  type:
+    description: "Image type (private or public)"
+    required: false
+    default: public
+  name:
+    description: "Full image name with tag"
+    required: true
+  token:
+    description: "ComputeSphere API token"
+    required: true
+  account_id:
+    description: "ComputeSphere account ID"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Send PUT request to ComputeSphere API
+      shell: bash
+      run: |
+        JSON_PAYLOAD=$(jq -n \
+          --arg username "${{ inputs.username }}" \
+          --arg password "${{ inputs.password }}" \
+          --arg registry "${{ inputs.registry }}" \
+          --arg provider "${{ inputs.provider }}" \
+          --arg type "${{ inputs.type }}" \
+          --arg name "${{ inputs.name }}" \
+          '{image: {username: $username, password: $password, url: $registry, provider: $provider, type: $type, name: $name}}'
+        )
+
+        API_URL="https://api.computesphere.com/api/v1/deployments/${{ inputs.deployment_id }}/image"
+
+        curl -X PUT "$API_URL" \
+          -H "Content-Type: application/json" \
+          -H "X-User-Token: ${{ inputs.token }}" \
+          -H "X-Account-ID: ${{ inputs.account_id }}" \
+          -d "$JSON_PAYLOAD"
